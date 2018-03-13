@@ -1,3 +1,103 @@
+@font-face {
+    font-family: 'Chaillot'; 
+    src: url('../fonts/Chaillot.ttf');  
+}
+
+body{
+    font-family: 'Fira Sans Condensed', sans-serif;
+}
+
+.navbar-brand{
+    font: italic 700 18px 'Fira Sans Condensed', sans-serif    
+}
+
+.hdng{
+    font-family: 'Chaillot', serif; 
+    animation:fade 5s;
+    -moz-animation:fade 5s; /* Firefox */
+    -webkit-animation:fade 5s; /* Safari and Chrome */
+    -o-animation:fade 5s; /* Opera */
+}
+
+.retroshadow{
+    color: #2c2c2c;    
+    letter-spacing: .05em;
+    text-shadow: 
+    4px 4px 0px #d5d5d5, 
+    7px 7px 0px rgba(0, 0, 0, 0.2);
+}
+
 .jumbotron{
     margin-top: -20px;
 }
+
+.row{
+    padding: 0 10px; 
+}
+
+.main .page-header{ 
+    margin-top: -10px
+}
+
+.contacts{
+    padding: 5px;    
+}
+
+.small{
+    font-size: x-small; 
+}
+
+a{
+    color: #333; 
+}
+
+a:hover{
+    color: #d43f3a
+}
+
+img{
+    width: 50%;
+    height: auto
+}
+
+@keyframes fade 
+{
+0% {opacity:0;}
+50% {opacity:0.5;}
+100% {opacity:1;}
+}
+
+@-moz-keyframes fade /* Firefox */
+{
+0% {opacity:0;}
+50% {opacity:0.5;}
+100% {opacity:1;}
+}
+
+@-webkit-keyframes fade /* Safari and Chrome */
+{
+0% {opacity:0;}
+50% {opacity:0.5;}
+100% {opacity:1;}
+}
+
+@-o-keyframes fade /* Opera */ {
+0% {opacity:0;}
+50% {opacity:0.5;}
+100% {opacity:1;}
+}
+
+@media (max-width: 768px) {
+    .btn-responsive {
+      padding:2px 4px;
+      font-size:80%;
+      line-height: 1;
+    }
+  }
+  
+  @media (min-width: 769px) and (max-width: 992px) {
+    .btn-responsive {
+      padding:4px 9px;
+      font-size:90%;
+      line-height: 1.2;
+    }

@@ -3,15 +3,20 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Welcome</title>
+    <title>Rodney Solomon Jr | Portfolio</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     
+    <script src="https://code.jquery.com/jquery.min.js"></script>
     <script src="js/react.js"></script>
     <script src="js/react-dom.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.38/browser.js"></script>
+    <script defer src="js/fontawesome-all.js"></script>    
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
-    <link rel="stylesheet" href="https://getbootstrap.com/docs/3.3/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <link rel="stylesheet" href="css/style.css">
+
+    <link href="https://fonts.googleapis.com/css?family=Fira+Sans+Condensed:300,300i,400,700i" rel="stylesheet">
 </head>
 <body>
     <div id="app"></div>                       
@@ -19,6 +24,7 @@
 
 
     <script type="text/babel">
+      
         //Navbar Component
         var Navbar = React.createClass({
           propTypes: {
@@ -26,7 +32,7 @@
           },
             getDefaultProps: function(){
               return {
-                brand: 'Rodney\'\s site', 
+                brand: 'Rodney Solomon Jr.', 
                 color: 'light' 
               }
             },
@@ -39,18 +45,21 @@
 
               var homeActive = '';
               var aboutActive = '';
+              var contactActive = ''; 
 
               if(this.props.page == 'home'){
                 homeActive = 'active';
               } else if(this.props.page == 'about'){
                 aboutActive = 'active';
-              } 
+              } else if(this.props.page == 'contact'){
+                contactActive = 'active'; 
+              }
                 return(
                   <div>
-                    <nav className={navClass}>
-                      <div className="container-fluid">
+                    <nav className={navClass} role="navigation">
+                      <div className="container">
                         <div className="navbar-header">
-                          <button type="button" className="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                          <button type="button" className="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="true">
                             <span className="sr-only">Toggle navigation</span>
                             <span className="icon-bar"></span>
                             <span className="icon-bar"></span>
@@ -63,6 +72,7 @@
                             <ul className="nav navbar-nav">
                               <li className={homeActive}><a onClick={this.props.homeClick} href="#">Home </a></li>
                               <li className={aboutActive}><a onClick={this.props.aboutClick} href="#">About</a></li>
+                              <li className={contactActive}><a onClick={this.props.contactClick} href="#">Contact</a></li>
                             </ul>             
                           
                           </div>
@@ -76,24 +86,22 @@
         // Jumbotron Component
         var Jumbotron = React.createClass({
           PropTypes: {
-            heading: React.PropTypes.string,
-            text: React.PropTypes.string,
+            heading: React.PropTypes.string,            
             link: React.PropTypes.string
           },
           getDefaultProps: function(){
               return {
-                heading: 'Welcome',
-                text: 'Welcome to my shiny new website built with React components', 
-                link: 'http://rodneysolomonjr.net'
+                heading: 'The DOM Magician',                 
+                link: 'http://rodneysolomonjr.net/doc/RodneySolomon.Resume2018.docx'
               }
           },
           render: function () {
             return(
               <div className="jumbotron">
                 <div className="container">
-                  <h1>{this.props.heading}</h1>
-                  <p>{this.props.text}</p>
-                  <p><a className="btn btn-primary btn-lg" href={this.props.link} role="button">Learn more &raquo;</a></p>                </div>
+                  <img src="img/brooklyn_based.jpg" /> 
+                  <h1 className="hdng retroshadow">{this.props.heading}</h1>
+                  <p><a className="btn btn-lg btn-danger btn-responsive" href={this.props.link} role="button">Résumé &raquo;</a></p>                </div>
               </div>
             )
           }
@@ -103,7 +111,7 @@
         var PageHome = React.createClass({
           render: function () {
             return(
-              <div className="container">
+              <div className="container main">
                 <div className="row">
                   <h2 className="page-header">Home</h2>
                   Main Content
@@ -127,13 +135,33 @@
             )
           }
         });
-
+        
+          // Contact Component
+          var PageContact = React.createClass({
+          render: function () {
+            return(
+              <div className="container">
+                <div className="row">
+                  <h2 className="page-header">Contact Me</h2>
+                  <p>
+                    <div><strong>Rodney Solomon, Jr.</strong></div>
+                    <div><strong>Telephone: </strong><a href="tel:+19043431774">904-343-1774</a></div>
+                    <div><strong>Email: </strong><a href="mailto:rodneysolomonjr@gmail.com">rodneysolomonjr@gmail.com</a></div>                    
+                  </p>
+                  <p>
+                    <div><strong>Please use the form below to contact me regarding business opportunities.</strong></div>
+                  </p>
+                </div>              
+              </div>
+            )
+          }
+        });
         // Footer Component 
 
         var Footer = React.createClass({
           getDefaultProps: function(){
             return {
-              website: 'Rodney Solomon, Inc.', 
+              website: 'Rodney Solomon, Jr.', 
               copy_year: 2018
             }
           },
@@ -143,6 +171,14 @@
                     <hr/>
                     <footer>
                         <p>&copy; {this.props.copy_year} {this.props.website}</p>
+                        <p>
+                          <a className="contacts" href="https://www.linkedin.com/in/rodneysolomonjr" target="_blank"><i className="fab fa-linkedin fa-3x"></i></a> 
+                          <a className="contacts" href="https://github.com/rsolomonjr" target="_blank"><i className="fab fa-github fa-3x"></i></a> 
+                          <a className="contacts" href="http://codepen.io/rsolomonjr1" target="_blank"><i className="fab fa-codepen fa-3x"></i></a> 
+                          <a className="contacts" href="https://twitter.com/rodneysolomonjr" target="_blank"><i className="fab fa-twitter fa-3x"></i></a> 
+                          <a className="contacts" href="mailto:rodneysolomonjr@gmail.com" target="_blank"><i className="fas fa-envelope fa-3x"></i></a> 
+                        </p>
+                        <div className="small">This site was created with React &amp; Bootstrap</div>
                       </footer>
                   </div>
             )
@@ -166,6 +202,11 @@
               page: 'about'
             })
           },  
+          handleContactClick: function(){
+            this.setState({
+              page: 'contact'
+            })
+          }, 
           render: function () {
             if (this.state.page == 'home'){
               var jumbotron = <Jumbotron />
@@ -174,13 +215,18 @@
               var jumbotron = '';
               var page = <PageAbout />
             }
+            else if(this.state.page == 'contact'){
+              var jumbotron = '';
+              var page = <PageContact />
+            }
             return(
               <div>
                 <Navbar 
                   color="dark"
                   page={this.state.page}
                   homeClick={this.handleHomeClick}
-                  aboutClick={this.handleAboutClick}  />
+                  aboutClick={this.handleAboutClick}
+                  contactClick={this.handleContactClick}  />
                 {jumbotron}
                 {page}
                 <Footer />
